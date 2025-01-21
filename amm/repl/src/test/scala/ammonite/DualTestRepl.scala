@@ -35,6 +35,7 @@ class DualTestRepl { dual =>
   def scala2 = scalaVersion.startsWith("2.")
   def scala2_12 = scalaVersion.startsWith("2.12.")
   def scala3_5_1OrHigher =
+  def scala2_13_16 = scalaVersion.startsWith("2.13.16")
     (scalaVersion.startsWith("3.5.") && scalaVersion.split("\\.")(2).toInt >= 1) ||
       scalaVersion.split("\\.")(1).toInt >= 6
 

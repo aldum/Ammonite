@@ -69,9 +69,14 @@ object AutocompleteTests extends TestSuite {
             x => Set("java", "javax") ^ (x - "javafx" - "javassist")
           )
         }
-        complete("""import java.<from><caret>""", Set("lang", "util") -- _)
+
+        if (!complete.check.scala2_13_16) {
+          complete("""import java.<from><caret>""", Set("lang", "util") -- _)
+        }
         complete("""import java.<from>u<caret>""", Set("util") ^ _)
-        complete("""import java.util.<from><caret>""", Set("LinkedHashMap", "LinkedHashSet") -- _)
+        if (!complete.check.scala2_13_16) {
+          complete("""import java.util.<from><caret>""", Set("LinkedHashMap", "LinkedHashSet") -- _)
+        }
         complete(
           """import java.util.<from>LinkedHa<caret>""",
           Set("LinkedHashMap", "LinkedHashSet") ^ _
